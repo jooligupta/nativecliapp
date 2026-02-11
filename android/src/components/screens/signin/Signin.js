@@ -28,10 +28,10 @@ function Signin({ navigation }) {
 
     React.useEffect(() => {
         if (user) {
-            // navigation.navigate('Home');
-            Alert.alert("Login Success", "You are logged in successfully");
+            // Navigation is handled by the root navigator switching based on isAuthenticated state
+            // console.log("User logged in:", user);
         }
-    }, [user, navigation]);
+    }, [user]);
 
     React.useEffect(() => {
         if (error) {
@@ -85,7 +85,7 @@ function Signin({ navigation }) {
                         <Text style={styles.inputLabel}>Password</Text>
                         <TextInput
                             style={styles.input}
-                            placeholder="••••••••"
+                            placeholder="........."
                             placeholderTextColor="#A0A0A0"
                             value={password}
                             onChangeText={setPassword}
@@ -96,7 +96,7 @@ function Signin({ navigation }) {
                             contextMenuHidden={true}
                         />
                         <TouchableOpacity style={styles.forgotPassword}>
-                            <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+                            <Text style={styles.forgotPasswordText} onPress={() => navigation.navigate('Forgot')}>Forgot Password?</Text>
                         </TouchableOpacity>
                     </View>
 
